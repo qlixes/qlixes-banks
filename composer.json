@@ -1,0 +1,19 @@
+{
+    "name": "qlixes/qlixes-bank",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "qlixes",
+            "email": "qlixess@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "qlixes\\Bank\\":"src/"
+        }
+    }
+}
