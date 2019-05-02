@@ -128,7 +128,7 @@ class Bca extends Banks
 
         $response = $this->client->request('POST', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -168,7 +168,7 @@ class Bca extends Banks
 
         $response= $this->client->request('GET', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -207,7 +207,7 @@ class Bca extends Banks
 
         $response = $this->client->request('GET', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -259,7 +259,7 @@ class Bca extends Banks
 
         $response = $this->client->request('GET', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -304,7 +304,7 @@ class Bca extends Banks
         
         $response = $this->client->request('GET', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -370,7 +370,7 @@ class Bca extends Banks
 
         $response = $this->client->response('GET', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -402,7 +402,7 @@ class Bca extends Banks
 
         $response = $this->client->response('GET', $request_path, $this->options);
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
