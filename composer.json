@@ -2,7 +2,8 @@
     "name": "qlixes/qlixes-bank",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^2.17"
     },
     "license": "MIT",
     "authors": [
