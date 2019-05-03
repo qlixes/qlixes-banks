@@ -406,6 +406,51 @@ class Bca extends Banks
     }
 
     /**
+     * Realtime deposit untuk produk BCA.
+     *
+     * @param string $oauth_token nilai token yang telah didapatkan setelah login
+     *
+     * @return \Unirest\Response
+     */
+    public function getInquiryPaymentStatus(
+        $oauth_token,
+        $company_code,
+        $request_id = null,
+        $customer_no = null
+    ) {
+        $apikey  = $this->settings['api_key'];
+
+        $secret  = $this->settings['secret_key'];
+
+        $params             = array();
+        $params['CompanyCode'] = $company_code;
+        $params['RequestID'] = $request_id;
+        $params['CustomerNumber'] = $customer_no;
+        ksort($params);
+
+        $auth_query_string = self::arrayImplode('=', '&', $params);
+
+        // $uriSign       = "GET:/general/rate/deposit";
+        // $isoTime       = self::generateIsoTime();
+        // $authSignature = self::generateSign($uriSign, $oauth_token, $secret, $isoTime, null);
+
+        $this->headers['Content-Type']    = 'application/json';
+        $this->headers['Authorization']   = "Bearer $oauth_token";
+        $this->headers['X-BCA-Key']       = $apikey;
+        $this->headers['X-BCA-Timestamp'] = $isoTime;
+        $this->headers['X-BCA-Signature'] = $authSignature;
+
+        $request_path = "/va/payments?$auth_query_string";
+
+        $body['grant_type'] = 'client_credentials';
+        $this->options['form_params'] = $body;
+
+        $response = $this->client->response('GET', $request_path, $this->options);
+
+        return $response->getBody()->getContents();
+    }
+
+    /**
      * Generate Signature.
      *
      * @param string $url Url yang akan disign.
